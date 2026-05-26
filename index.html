@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>UI</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div id="root"></div>
@@ -19,9 +19,24 @@
     ></script>
 
     <script>
-      const heading = React.createElement("h1", {id:"heading"}, "Hello EveryOne !!!");
+      const heading1 = React.createElement(
+        "h1",
+        { id: "heading" },
+        "Heading - 01",
+      );
+      const heading2 = React.createElement(
+        "h2",
+        { id: "heading" },
+        "Heading - 02",
+      );
+
+      const container = React.createElement("div", { id: "heading" }, [
+        heading1,
+        heading2,
+      ]);
+
       const root = ReactDOM.createRoot(document.getElementById("root"));
-      root.render(heading);
+      root.render(container);
     </script>
   </body>
 </html>
