@@ -9,23 +9,6 @@
   <body>
     <div id="root"></div>
 
-    <script
-      crossorigin
-      src="https://unpkg.com/react@18/umd/react.development.js"
-    ></script>
-    <script
-      crossorigin
-      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
-    ></script>
-
-    <script>
-      const container = React.createElement("div", { id: "heading" }, [
-        React.createElement("h1", { id: "heading" }, "Heading - 01"),
-        React.createElement("h2", { id: "heading" }, "Heading - 02"),
-      ]);
-
-      const root = ReactDOM.createRoot(document.getElementById("root"));
-      root.render(container);
-    </script>
+    <script type="module" src="./script.js"></script>
   </body>
 </html>
