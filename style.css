@@ -1,3 +1,38 @@
-#heading {
-    color: red;
+.logo-container {
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid black;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+}
+
+.nav-items > ul {
+    font-size: 20px;
+    font-style: inherit;
+    display: flex;
+    padding: 5px;
+    list-style-type: none;
+}
+
+.nav-items > ul > li {
+    padding: 2px;
+    margin: 10px;
+    border: 1px solid red;
+    background-color: aqua;
+
+}
+
+body{
+    border: 2px solid black;
+    width: 1000px;
+    height: 1000px;
+}
+div{
+    background-color: blanchedalmond;
+}
+.offer{
+    border: 1px solid black;
 }
