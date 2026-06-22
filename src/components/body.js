@@ -1,36 +1,53 @@
-import RestaurantCard from "./restaurantcard";
-import { restlist } from "../utils/constants";
-import { useState } from "react"; 
+import RestaurantCard from "./RestaurantCard";
+import { useState, useEffect } from "react";
+// import { restlist } from "../utils/constants";
+
 const Body = () => {
-    const [listOfRestaurants, setlistofrestaurant] = useState(restlist);
+  
+  const [listOfRestaurants, setListOfRestaurants] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.52110&lng=73.85020&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",
+    );
+    const json = await data.json();
+    console.log(json);
+    setListOfRestaurants(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants,
+    );
+  };
+
+  if (listOfRestaurants.length === 0){
+    return <h1>Loading...............</h1>
+  }
+
   return (
     <div className="body">
-      <div className="search">search</div>
       <div className="filter">
         <button
           className="filter-btn"
           onClick={() => {
             const filteredList = listOfRestaurants.filter(
-              (res) => res.info.avgRating > 4,
+              (res) => res.info.avgRating > 4.0,
             );
-            setlistofrestaurant(filteredList);
+            setListOfRestaurants(filteredList);
           }}
         >
-            Top Rated Restaurants 
+          Top Rated Restaurants
         </button>
       </div>
       <div className="res-container">
         {listOfRestaurants.map((restaurant) => {
-            return(
-                <RestaurantCard key ={restaurant.info.id} restData={restaurant} />
-            );
+          return (
+            <RestaurantCard key={restaurant?.info?.id} resData={restaurant} />
+          );
         })}
       </div>
-      {restlist.map((restaurant) => {
-        return (
-          <RestaurantCard key={restaurant.info.id} restData={restaurant} />
-        );
-      })}
     </div>
   );
 };

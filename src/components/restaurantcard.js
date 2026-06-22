@@ -1,7 +1,7 @@
 import {Card_URL, card_URL} from "../utils/mockdata";
 
 const RestaurantCard = (props) => {
-  const { restData } = props;
+  const { resData } = props;
   const {
     name,
     cloudinaryImageId,
@@ -11,7 +11,7 @@ const RestaurantCard = (props) => {
     costForTwo,
     avgRating,
     sla
-  } = restData.info;
+  } = resData.info;
   return (
     <div className="res-card">
       <img
